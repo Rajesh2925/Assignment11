@@ -1,0 +1,104 @@
+package Assignment1;
+
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.Scanner;
+
+public class MainExecution {
+
+        public static void main(String args[]) throws IOException, MaxExceeded {
+
+            Scanner sc = new Scanner(System.in);
+            System.out.println("enter no of people in the home:");
+            int noOfPeople = 0;
+            try {
+                noOfPeople = sc.nextInt();
+
+                if (noOfPeople > 10) {
+                    throw new MaxExceeded();
+
+                }
+            } catch (MaxExceeded nne) {
+                System.out.println(nne.getMessage());
+
+            }
+            System.out.println("enter no of people living in the apartment:");
+            int NoOfPeopleApartment = 0;
+            try {
+                NoOfPeopleApartment = sc.nextInt();
+
+                if (NoOfPeopleApartment > 1000) {
+                    throw new MaxExceeded();
+                }
+            } catch (MaxExceeded nne) {
+                System.out.println(nne.getMessage());
+            }
+
+            System.out.println("enter no of security in the apartment:");
+            int security1 = 0;
+            try {
+                security1 = sc.nextInt();
+
+                if (security1 > 1000) {
+                    throw new MaxExceeded();
+                }
+            } catch (MaxExceeded nne) {
+                System.out.println(nne.getMessage());
+            }
+            FileReader floors = new FileReader("floor.txt");
+            FileReader bedRooms = new FileReader("bedRoom.txt");
+            FileReader max_size = new FileReader("max_size.txt");
+            int content;
+            int i = 0;
+
+            int f[] = new int[2];
+            while ((content = floors.read()) != -1) {
+                f[i] = content;
+                i++;
+            }
+
+            int b[] = new int[2];
+            i = 0;
+            while ((content = bedRooms.read()) != -1) {
+                b[i] = content;
+                i++;
+            }
+
+            char m[] = new char[2];
+            i = 0;
+            while ((content = max_size.read()) != -1) {
+                m[i] = (char) content;
+                i++;
+            }
+
+            House h = new House();
+            Apartmenter ap = new Apartmenter();
+
+            h.setFloors((char) f[0]);
+            h.setMax_size((char) m[0]);
+            h.setBedrooms((char) b[0]);
+            h.people(noOfPeople);
+
+            ap.setMax_size((char) m[1]);
+            ap.setHouses(10);
+            ap.setFloors((char) f[1]);
+            ap.people(NoOfPeopleApartment, security1);
+            System.out.println();
+            System.out.println("House details:");
+            System.out.println();
+
+            h.getBedrooms();
+            h.getFloors();
+            h.getMax_size();
+            h.total();
+            System.out.println();
+            System.out.println("Apartment details:");
+            System.out.println();
+
+            ap.getFloors();
+            ap.getMax_size();
+            ap.total();
+
+        }
+    }
+
