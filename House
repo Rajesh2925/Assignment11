@@ -1,0 +1,45 @@
+package Assignment1;
+
+public class House {
+        private char bedrooms;
+        private char max_size;
+        private char floors;
+        private int people=5;
+        public void people(int p){
+            people=p;
+        }
+        public void total(){
+            System.out.println("the total people in the apartment is "+people);
+        }
+
+
+
+        public char getMax_size() {
+            System.out.println("house size is "+max_size+"sq.ft");
+
+            return 0;
+        }
+
+        public char getFloors() {
+            System.out.println("No of floors in the apartment is "+floors);
+            return 0;
+        }
+
+        public void setFloors(char floors) {
+            this.floors = floors;
+        }
+
+        public void setMax_size(char max_size) {
+            this.max_size = max_size;
+        }
+
+        public int getBedrooms() {
+            System.out.println("This building has "+bedrooms+" bedrooms in it");
+            return 0;
+        }
+
+        public void setBedrooms(char bedrooms) {
+            this.bedrooms = bedrooms;
+        }
+    }
+
