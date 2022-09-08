@@ -1,0 +1,44 @@
+import java.io.IOException;
+import java.util.Scanner;
+import java.util.logging.FileHandler;
+import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
+
+public class LoggerExampleFile {
+
+    public static void main(String[] args) {
+
+        Logger logger = Logger.getLogger("MyLog");
+        FileHandler fh;
+
+        try {
+
+            fh = new FileHandler("E://programs//logFiles.log");
+            logger.addHandler(fh);
+            SimpleFormatter formatter = new SimpleFormatter();
+            fh.setFormatter(formatter);
+
+
+            Scanner sc = new Scanner(System.in);
+            
+            int a = sc.nextInt();
+            int b = sc.nextInt();
+            try {
+                int c = a / b;
+                logger.info("Division succesfull");
+            }
+catch(ArithmeticException e){
+                logger.warning("cannot divide please be aware of your inputs");
+
+            }
+        }
+        catch (SecurityException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        logger.info("program execution finished");
+
+    }
+}
