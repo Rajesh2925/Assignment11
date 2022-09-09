@@ -1,4 +1,4 @@
-public class multiThreadYield {
+public class MultiThreadYield {
         public static void main(String[] args) throws InterruptedException {
             Thread producer = new Producer();
             Thread consumer = new Consumer();
