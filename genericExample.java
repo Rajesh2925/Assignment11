@@ -1,4 +1,4 @@
-public class genericExample{
+public class GenericExample{
     static <E> void  genericMethod(E[] array ){
         for(E element : array){
             System.out.println(element);
